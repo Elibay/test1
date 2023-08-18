@@ -8,7 +8,7 @@ from file_manager_gui import contentWidgets
 server = socket.socket()
 
 server.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-server.bind((socket.gethostname(), 9090))
+server.bind(('192.168.0.2', 9090))
 server.listen()
 
 
