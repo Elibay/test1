@@ -11,7 +11,7 @@ class updateItemsInterface:
 
 
 def update_item():
-    path = 'chromedriver/chromedriver.exe'
+    path = 'chromedriver/chromedriver'
     upi = updateItemsInterface()
     upi.update_price(path)
 
