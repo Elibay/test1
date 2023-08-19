@@ -26,7 +26,7 @@ while True:
         conn.send(json_post)
 
     if json_reader.get('add'):
-        add_item(json_reader['add']['wb_id'], json_reader['add']['wm_id'], json_reader['add']['sku'])
+        add_item(json_reader['add']['wb_id'], json_reader['add']['wm_id'], json_reader['add']['sku'], json_reader['add']['cof'])
 
     if json_reader.get('del'):
         cw = contentWidgets()
