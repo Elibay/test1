@@ -3,14 +3,15 @@ from wb_api import post_amount, post_price
 
 
 class fileManagerAdd:
-    def __init__(self, values, wb_id, mw_id, mw_link, wb_link, sku):
+    def __init__(self, values, wb_id, mw_id, mw_link, wb_link, sku, cof):
         self._values = values
         self._values.append(wb_id)
         self._values.append(mw_id)
         self._values.append(wb_link)
         self._values.append(mw_link)
         self._values.append(sku)
-        self._wb_tuple = (values[1],wb_id , values[3], sku)
+        self._values.append(cof)
+        self._wb_tuple = (values[1],wb_id , values[3], sku, cof)
 
     #Подключение к DB
     def _sqlite_con(self):
@@ -32,7 +33,7 @@ class fileManagerAdd:
         amount_tuple = [(self._wb_tuple[2], self._wb_tuple[3])]
         price_tuple = [(self._wb_tuple[0], self._wb_tuple[1])]
         post_amount(amount_tuple)
-        post_price(price_tuple)
+        post_price(price_tuple, self._wb_tuple[4])
 
 
 class fileManagerUpdate:
