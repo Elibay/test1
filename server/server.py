@@ -31,5 +31,8 @@ while True:
     if json_reader.get('del'):
         cw = contentWidgets()
         cw.del_item(json_reader['del']['wb_id'])
+    if json_reader.get('update'):
+        cw = contentWidgets():
+        cw.update_cof(json_reader['update']['wb_id'], json_reader['update']['cof'])
 
     conn.close()
