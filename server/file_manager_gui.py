@@ -9,10 +9,10 @@ class contentWidgets:
         cur = self._sqlite_con().cursor()
         cur.execute('CREATE TABLE if not exists wb_wm(id INTEGER PRIMARY KEY AUTOINCREMENT,\
                     name STRING, current_price INTEGER, old_price INTEGER, count INTEGER, wb_id INTEGER,\
-                     wm_id INTEGER, wb_link STRING, wm_link STRING, sku STRING)')
+                     wm_id INTEGER, wb_link STRING, wm_link STRING, sku STRING, cof INTEGER)')
 
         items = cur.execute('SELECT name, current_price, old_price, count,\
-                            wb_id, wm_id, wb_link, wm_link, sku  FROM wb_wm').fetchall()
+                            wb_id, wm_id, wb_link, wm_link, sku, cof  FROM wb_wm').fetchall()
 
         items_dict = {
             'name' : tuple(i[0] for i in items),
@@ -24,11 +24,17 @@ class contentWidgets:
             'wb_link' : tuple(i[6] for i in items),
             'wm_link' : tuple(i[7] for i in items),
             'sku' : tuple(i[8] for i in items),
+            'cof' : tuple(i[9] for i in items),
         }
 
         return items_dict
-
-
+    def update_cof(self, wb_id, cof):
+        con = self._sqlite_con()
+        cur = cur.cursor()
+        cur.execute('UPDATE wm_wb set cof = ? where wb_id =?', (cof, wb_id))
+        con.commit()
+        con.close()
+    
     def del_item(self, wb_id):
         with self._sqlite_con() as con:
             cur = con.cursor()
