@@ -32,6 +32,6 @@ class addItemInterface:
 
 #Функция для экспорта
 def add_item(wb_id, wm_id, sku, cof):
-    path = 'chromedriver/chromedriver'
+    path = 'server/chromedriver/chromedriver'
     new_item = addItemInterface(wb_id, wm_id, sku, cof)
     new_item.add_new_item(path)
