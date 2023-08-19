@@ -17,7 +17,7 @@ class fileManagerAdd:
     def _sqlite_con(self):
         con = sqlite3.connect('WB_WM.db')
         cur = con.cursor()
-        cur.execute('CREATE TABLE if not exists wb_wm(name, current_price, old_price, count, wb_id, wm_id, wb_link, wm_link, sku)')
+        cur.execute('CREATE TABLE if not exists wb_wm(name, current_price, old_price, count, wb_id, wm_id, wb_link, wm_link, sku, cof)')
         con.commit()
         return con
 
@@ -25,8 +25,8 @@ class fileManagerAdd:
         con = self._sqlite_con()
         cur = con.cursor()
         _to_tuple = tuple(self._values)
-        cur.execute('INSERT INTO wb_wm(name, current_price, old_price, count, wb_id, wm_id, wb_link, wm_link, sku)\
-                     VALUES(?,?,?,?,?,?,?,?, ?)', _to_tuple)
+        cur.execute('INSERT INTO wb_wm(name, current_price, old_price, count, wb_id, wm_id, wb_link, wm_link, sku, cof)\
+                     VALUES(?,?,?,?,?,?,?,?,?,?)', _to_tuple)
 
         con.commit()
         con.close()
@@ -57,8 +57,8 @@ class fileManagerUpdate:
         records_list_count = [(v, k) for k, v in values_dict[1].items()]
         cur.executemany(sql_query, records_list_count)
         con.commit()
-        nm_price = cur.execute('SELECT current_price, wb_id FROM wb_wm').fetchall()
-        post_price(nm_price)
+        nm_price = cur.execute('SELECT current_price, wb_id, cof FROM wb_wm').fetchall()
+        post_price((nm_price[0], nm_price[1]), nm_price[2])
         sku_count = cur.execute('SELECT count, sku FROM wb_wm').fetchall()
         post_amount(sku_count)
 
