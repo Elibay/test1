@@ -33,7 +33,7 @@ class fileManagerAdd:
         amount_tuple = [(self._wb_tuple[2], self._wb_tuple[3])]
         price_tuple = [(self._wb_tuple[0], self._wb_tuple[1])]
         post_amount(amount_tuple)
-        post_price(price_tuple, self._wb_tuple[4])
+        post_price(price_tuple, [(self._wb_tuple[4],)])
 
 
 class fileManagerUpdate:
@@ -57,8 +57,9 @@ class fileManagerUpdate:
         records_list_count = [(v, k) for k, v in values_dict[1].items()]
         cur.executemany(sql_query, records_list_count)
         con.commit()
-        nm_price = cur.execute('SELECT current_price, wb_id, cof FROM wb_wm').fetchall()
-        post_price((nm_price[0], nm_price[1]), nm_price[2])
+        nm_price = cur.execute('SELECT current_price, wb_id FROM wb_wm').fetchall()
+        cof = cur.execute('SELECT cof FROM wb_wm').fetchall()
+        post_price(nm_price, cof)
         sku_count = cur.execute('SELECT count, sku FROM wb_wm').fetchall()
         post_amount(sku_count)
 

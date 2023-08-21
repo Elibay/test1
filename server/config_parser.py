@@ -33,8 +33,8 @@ class parserConfig(webBrowser):
     def _get_item_count(self):
         count = 0
         _get_element_count_wrapper = self._browser.find_element(By.CLASS_NAME, 'list-amount').find_elements(By.TAG_NAME, 'li')
-        for i in range(len(_get_element_count_wrapper)):
-            tmp = _get_element_count_wrapper[i].find_element(By.CLASS_NAME, 'count').text
+        for i in range(len(_get_element_count_wrapper[1:3])):
+            tmp = _get_element_count_wrapper[1:3][i].find_element(By.CLASS_NAME, 'count').text
             if tmp[:-4].isdigit():
                 count += int(tmp[:-4])
         return count
@@ -43,11 +43,14 @@ class parserConfig(webBrowser):
     def add_item_parse(self):
         self._browser.get(self._link)
         self._proxy_element = self._browser.find_element(By.TAG_NAME, 'body')
-        self._prices = self._get_price()
-        self._count = self._get_item_count()
-        self._proxy_element.send_keys(Keys.ESCAPE)
-        self._list_values =  [self._get_name(),self._prices[0],self._prices[1],self._count]
-        return self._list_values
+        try:
+            self._prices = self._get_price()
+            self._count = self._get_item_count()
+            self._proxy_element.send_keys(Keys.ESCAPE)
+            self._list_values =  [self._get_name(),self._prices[0],self._prices[1],self._count]
+            return self._list_values
+        except Exception:
+            return [None,None,None,None]
 
     #Запускает парсер и возвращает обновленые цены
     def update_item_parse(self, wm_links):
@@ -57,7 +60,7 @@ class parserConfig(webBrowser):
             self._browser.get(i[0])
             time.sleep(2)
             self._new_current_price[i[0]] = self._get_price()[0]
-            self._new_count_price[i[0]] = self._get_item_count()
+            self._new_count[i[0]] = self._get_item_count()
 
 
         return self._new_current_price, self._new_count
