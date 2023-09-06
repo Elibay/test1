@@ -20,7 +20,7 @@ class fileManagerAdd:
         cur = con.cursor()
         cur.execute('CREATE TABLE if not exists wb_wm(name, current_price, old_price, count, wb_id, wm_id, wb_link, wm_link, sku, cof)')
         table = cur.execute('PRAGMA table_info("wb_wm")').fetchall()[-1]
-        if table != 'category':
+        if table[1] != 'category':
             cur.execute('ALTER TABLE wb_wm ADD column category "float" DEFAULT 0 ')
             cur.execute('UPDATE wb_wm SET category = 0')
         con.commit()

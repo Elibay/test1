@@ -13,7 +13,7 @@ class contentWidgets:
                     name STRING, current_price INTEGER, old_price INTEGER, count INTEGER, wb_id INTEGER,\
                      wm_id INTEGER, wb_link STRING, wm_link STRING, sku STRING, cof REAL)')
         table = cur.execute('PRAGMA table_info("wb_wm")').fetchall()[-1]
-        if table != 'category':
+        if table[1] != 'category':
             cur.execute('ALTER TABLE wb_wm ADD column category "float" DEFAULT 0 ')
             cur.execute('UPDATE wb_wm SET category = 0')
 
