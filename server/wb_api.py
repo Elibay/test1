@@ -4,7 +4,7 @@ def get_rate():
     return round(100 / requests.get(url='https://www.cbr-xml-daily.ru/daily_json.js')\
                    .json()['Valute']['KZT']['Value'], 1)
 #Отправляет цены
-def post_price(nm_price, cof):
+def post_price(nm_price, cof, category):
     print(cof[0][0])
     headers = {
         'Authorization': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhY2Nlc3NJRCI6Ijc5NjAzMDZmLTdhYmMtNDM0ZS05M2E3LWVmMmUyOWEyOWZmMCJ9.OJ-0Wcogy-mA4O_SmVfvN_IiCxKx3nGg55KD1zlOUWc',
@@ -13,7 +13,7 @@ def post_price(nm_price, cof):
     data = []
     for i in range(len(nm_price)):
         if nm_price[i][0] != None:
-            data_dict = {'nmId': int(str(nm_price[i][1]).replace(".", "")), 'price' : ((int(nm_price[i][0])+550+575)*float(str(cof[i][0]).replace(",",".")))//get_rate()}
+            data_dict = {'nmId': int(str(nm_price[i][1]).replace(".", "")), 'price' : ((float(str(cof[i][0]).replace(",","."))*(int(nm_price[i][0])+700)+(int(nm_price[i][0])+700)))/(1-category[i][0])//get_rate()}
             data.append(data_dict)
 
     res = requests.post(url='https://suppliers-api.wildberries.ru/public/api/v1/prices', headers=headers, json=data)

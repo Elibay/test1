@@ -26,17 +26,19 @@ while True:
             json_post = json.dumps(content).encode('utf-8')
             print(json_post)
             conn.sendall(json_post)
-    
+
         if json_reader.get('add'):
             add_item(json_reader['add']['wb_id'], json_reader['add']['wm_id'], json_reader['add']['sku'], json_reader['add']['cof'])
-    
+
         if json_reader.get('del'):
             cw = contentWidgets()
             cw.del_item(json_reader['del']['wb_id'])
-        if json_reader.get('update'):
+        if json_reader.get('update_cof'):
             cw = contentWidgets()
             cw.update_cof(json_reader['update']['wb_id'], json_reader['update']['cof'])
+        if json_reader.get('update_category'):
+            cw = contentWidgets()
+            cw.update_category(json_reader['update']['wb_id'], json_reader['update']['category'])
         else:
             continue
     conn.close()
-

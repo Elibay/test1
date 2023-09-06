@@ -1,6 +1,5 @@
 from config_parser import parserConfig
 from file_manager_parser import fileManagerUpdate
-from wb_api import post_amount, post_price
 
 class updateItemsInterface:
     #Обновляет значения в БД
