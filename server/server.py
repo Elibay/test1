@@ -8,7 +8,7 @@ from file_manager_gui import contentWidgets
 server = socket.socket()
 
 server.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-server.bind(('192.168.0.2', 9090))
+server.bind(('109.248.170.187', 9090))
 server.listen()
 
 while True:
@@ -23,9 +23,9 @@ while True:
         if json_reader.get('get'):
             cw = contentWidgets()
             content = cw.get_content()
-            print(content)
             json_post = json.dumps(content).encode('utf-8')
-            conn.send(json_post)
+            print(json_post)
+            conn.sendall(json_post)
     
         if json_reader.get('add'):
             add_item(json_reader['add']['wb_id'], json_reader['add']['wm_id'], json_reader['add']['sku'], json_reader['add']['cof'])
