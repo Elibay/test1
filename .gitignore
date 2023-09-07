@@ -2,3 +2,9 @@ venv/
 client/
 
 __pycache__/
+
+Alisher/*.db
+
+Alisher/*.db
+Alisher/**/*.db
+Alisher/**/**/*.db
