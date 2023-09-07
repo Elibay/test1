@@ -35,7 +35,7 @@ while True:
             cw.del_item(json_reader['del']['wb_id'])
         if json_reader.get('update_cof'):
             cw = contentWidgets()
-            cw.update_cof(json_reader['update_category']['wb_id'], json_reader['update_category']['cof'])
+            cw.update_cof(json_reader['update_cof']['wb_id'], json_reader['update_cof']['cof'])
         if json_reader.get('update_category'):
             cw = contentWidgets()
             cw.update_category(json_reader['update_category']['wb_id'], json_reader['update_category']['category'])
