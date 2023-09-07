@@ -15,7 +15,7 @@ def post_price(nm_price, cof, category):
             data_dict = {'nmId': int(str(nm_price[i][1]).replace(".", "")), 'price' : ((float(str(cof[i][0]).replace(",","."))*(int(nm_price[i][0])+700)+(int(nm_price[i][0])+700)))/float((1-float(str(category[i][0]).replace(",", "."))))//get_rate()}
             #((float(str(cof[i][0]).replace(",","."))*(int(nm_price[i][0])+700)+(int(nm_price[i][0])+700)))/float((1-float(str(category[i][0]).replace(",", "."))))//get_rate())
             data.append(data_dict)
-    print(data_dict['price'])
+    print(data_dict)
     res = requests.post(url='https://suppliers-api.wildberries.ru/public/api/v1/prices', headers=headers, json=data)
     print('price\n', res.status_code)
 #Отправляет остатки
