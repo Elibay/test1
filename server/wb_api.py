@@ -12,7 +12,7 @@ def post_price(nm_price, cof, category):
     data = []
     for i in range(len(nm_price)):
         if nm_price[i][0] != None:
-            data_dict = {'nmId': int(str(nm_price[i][1]).replace(".", "")), 'price' : ((float(str(cof[i][0]).replace(",","."))*(int(nm_price[i][0])+700)+(int(nm_price[i][0])+700)))/float((1-float(str(category[i][0]).replace(",", "."))))//get_rate()}
+            data_dict = {'nmId': int(str(nm_price[i][1]).replace(".", "")), 'price' : int(((float(str(cof[i][0]).replace(",","."))*(int(nm_price[i][0])+700)+(int(nm_price[i][0])+700)))/float((1-float(str(category[i][0]).replace(",", "."))))//get_rate())}
             #((float(str(cof[i][0]).replace(",","."))*(int(nm_price[i][0])+700)+(int(nm_price[i][0])+700)))/float((1-float(str(category[i][0]).replace(",", "."))))//get_rate())
             data.append(data_dict)
     print(data_dict)
