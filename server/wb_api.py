@@ -17,7 +17,7 @@ def post_price(nm_price, cof, category):
             data.append(data_dict)
     print(data_dict['price'])
     res = requests.post(url='https://suppliers-api.wildberries.ru/public/api/v1/prices', headers=headers, json=data)
-    print(res.text)
+    print('price\n', res.status_code)
 #Отправляет остатки
 def post_amount(sku_count):
 
@@ -34,4 +34,4 @@ def post_amount(sku_count):
 
 
     res = requests.put(url=f'https://suppliers-api.wildberries.ru/api/v3/stocks/{warehouse}', headers=headers, json={'stocks':data})
-    print(res.text)
+    print(res.status_code)
