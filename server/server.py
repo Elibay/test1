@@ -24,7 +24,6 @@ while True:
             cw = contentWidgets()
             content = cw.get_content()
             json_post = json.dumps(content).encode('utf-8')
-            print(json_post)
             conn.sendall(json_post)
 
         if json_reader.get('add'):
