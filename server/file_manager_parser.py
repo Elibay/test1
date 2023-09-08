@@ -12,7 +12,7 @@ class fileManagerAdd:
         self._values.append(sku)
         self._values.append(cof)
         self._values.append(category)
-        self._wb_tuple = (values[1],wb_id , values[3], sku, cof, category)
+        self._wb_tuple = (values[2] ,wb_id , values[3], sku, cof, category)
 
     #Подключение к DB
     def _sqlite_con(self):
@@ -62,7 +62,7 @@ class fileManagerUpdate:
         records_list_count = [(v, k) for k, v in values_dict[1].items()]
         cur.executemany(sql_query, records_list_count)
         con.commit()
-        nm_price = cur.execute('SELECT current_price, wb_id FROM wb_wm').fetchall()
+        nm_price = cur.execute('SELECT old_price, wb_id FROM wb_wm').fetchall()
         cof = cur.execute('SELECT cof FROM wb_wm').fetchall()
         category = cur.execute('SELECT category FROM wb_wm').fetchall()
         post_price(nm_price, cof, category)
