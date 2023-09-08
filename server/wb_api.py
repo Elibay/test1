@@ -12,7 +12,7 @@ def post_price(nm_price, cof, category):
     data = []
     def get_price(price):
         percent_price = str(price).replace(" ", '')
-        return (percent_price/100)*10
+        return (int(percent_price)/100)*10
 
     for i in range(len(nm_price)):
         if nm_price[i][0] != None:
