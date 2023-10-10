@@ -25,14 +25,14 @@
     </div>
     <div class="items_wrapper">
         <ul>{%for i in range(len)%}
-            <li class="fields name_item">{{items['name'][i]}}</li>
-            <a class="fields" href="{{items['wm_link'][i]}}">{{items['wm_id'][i]}}</a>
-            <a class="fields" href="{{items['wb_link'][i]}}">{{items['wb_id'][i]}}</a>
-            <li class="fields">{{items['current_price'][i]}}</li>
-            <li class="fields">{{items['old_price'][i]}}</li>
-            <li class="fields">{{items['cof'][i]}}</li>
-            <li class="fields">{{items['category'][i]}}</li>
-            <li class="fields">{{items['count'][i]}}</li>
+            <li class="fields field_broad name_item">{{items['name'][i]}}</li>
+            <a class="fields field_broad" href="{{items['wm_link'][i]}}">{{items['wm_id'][i]}}</a>
+            <a class="fields field_broad" href="{{items['wb_link'][i]}}">{{items['wb_id'][i]}}</a>
+            <li class="fields field_broad">{{items['current_price'][i]}}</li>
+            <li class="fields field_broad">{{items['old_price'][i]}}</li>
+            <li class="fields field_narrow">{{items['cof'][i]}}</li>
+            <li class="fields field_narrow">{{items['category'][i]}}</li>
+            <li class="fields field_broad">{{items['count'][i]}}</li>
             <form class="form_del" action="/" method="post">
                 <button class="del_btn" type="submit" name="wm_id" value="{{items['wm_id'][i]}}">Удалить</button>
             </form>
