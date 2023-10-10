@@ -26,8 +26,8 @@
     <div class="items_wrapper">
         <ul>{%for i in range(len)%}
             <li class="fields field_broad name_item">{{items['name'][i]}}</li>
-            <a class="fields field_broad" href="{{items['wm_link'][i]}}">{{items['wm_id'][i]}}</a>
             <a class="fields field_broad" href="{{items['wb_link'][i]}}">{{items['wb_id'][i]}}</a>
+            <a class="fields field_broad" href="{{items['wm_link'][i]}}">{{items['wm_id'][i]}}</a>
             <li class="fields field_broad">{{items['current_price'][i]}}</li>
             <li class="fields field_broad">{{items['old_price'][i]}}</li>
             <li class="fields field_narrow">{{items['cof'][i]}}</li>
