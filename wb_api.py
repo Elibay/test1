@@ -8,7 +8,7 @@ class wbApiSender(wbDB):
         super().__init__()
 
 
-    def post_price_wb(wb_id, price):
+    def post_price_wb(self, wb_id, price):
         headers = {
             'Authorization': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhY2Nlc3NJRCI6Ijc5NjAzMDZmLTdhYmMtNDM0ZS05M2E3LWVmMmUyOWEyOWZmMCJ9.OJ-0Wcogy-mA4O_SmVfvN_IiCxKx3nGg55KD1zlOUWc',
             'Content-Type': 'application/json'
