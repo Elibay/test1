@@ -1,0 +1,125 @@
+body {
+    margin: 0;
+
+}
+
+ul, ul li {
+    list-style: none;
+}
+
+.items_wrapper {
+    max-width: 1920px;
+}
+
+.item_card {
+    height: 300px;
+    width: 200px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    border: solid;
+    background-color: #DCDCDC;
+}
+
+ul {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction:row;
+    justify-content: start;
+    margin: 0;
+
+}
+
+.items {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+.name {
+    height: 90px;
+    overflow: hidden;
+}
+
+.fields {
+    font-size: 25px;
+    text-align: center;
+    border: solid;
+    border-left: 0.5px;
+    text-decoration: none;
+    color: black;
+}
+
+.add_item {
+    position: relative;
+    margin-bottom: 40px;
+}
+
+.add_btn {
+    font-size: 25px;
+    color: black;
+    margin-left: 20px;
+    text-decoration: none;
+}
+
+.del_btn {
+    width: 70px;
+    height: 55px;
+}
+
+
+.btn_wrapp {
+    position: relative;
+    height: 40px;
+    width: 140px;
+    margin-left: 45%;
+    background-color: #DCDCDC;
+    border-radius: 20px;
+    padding-top: 10px;
+}
+
+
+.static_fields {
+    height: 50px;
+}
+.static_fields-names {
+    height: 50px;
+    max-width: 100%;
+    margin: 0;
+}
+
+.fields_static{
+    height: 50px;
+    width: 200px;
+    font-size: 25px;
+    text-align: center;
+    border: solid;
+    border-left: 0.5px;
+}
+
+
+
+
+
+.name_item {
+    overflow: hidden;
+    border: solid;
+    height: 50px;
+    width: 170px;
+}
+
+.field_broad {
+    height: 50px;
+    width: 170px;
+}
+
+.field_narrow {
+    height: 50px;
+    width: 130px;
+}
+
+
+.field_name {
+    border: solid;
+    height: 50px;
+    width: 200px;
+}

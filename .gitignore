@@ -1,10 +1,6 @@
-venv/
-client/
-
-__pycache__/
-
-Alisher/*.db
-
-Alisher/*.db
-Alisher/**/*.db
-Alisher/**/**/*.db
+/venv
+/chromedriver
+/items.json
+/__pycache__/
+/WM_WB.db
+/test.py

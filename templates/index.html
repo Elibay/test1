@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link type="text/css" href="{{url_for('static', filename='css/style.css')}}" rel="stylesheet">
+    <title>WM_WB_web</title>
+</head>
+<body>
+    <div class="add_item">
+        <div class="btn_wrapp"><a class="add_btn" href=/add>Добавить</a></div>
+    </div>
+
+    <div class="static_fields">
+        <ul class="static_fields-names">
+            <li class="field_name field_broad fields">Наименование</li>
+            <li class="field_wb_price field_broad fields">Цена WB</li>
+            <li class="field_wm_price field_broad fields">Цена WM</li>
+            <li class="field_wb_id field_broad fields">WB ID</li>
+            <li class="field_wm_id field_broad fields">WM ID</li>
+            <li class="field_category field_narrow fields">Категория</li>
+            <li class="field_cof field_narrow fields">Коф</li>
+            <li class="field_count field_broad fields">Количество</li>
+        </ul>
+    </div>
+    <div class="items_wrapper">
+        <ul>{%for i in range(len)%}
+            <li class="fields name_item">{{items['name'][i]}}</li>
+            <a class="fields" href="{{items['wm_link'][i]}}">{{items['wm_id'][i]}}</a>
+            <a class="fields" href="{{items['wb_link'][i]}}">{{items['wb_id'][i]}}</a>
+            <li class="fields">{{items['current_price'][i]}}</li>
+            <li class="fields">{{items['old_price'][i]}}</li>
+            <li class="fields">{{items['cof'][i]}}</li>
+            <li class="fields">{{items['category'][i]}}</li>
+            <li class="fields">{{items['count'][i]}}</li>
+            <form class="form_del" action="/" method="post">
+                <button class="del_btn" type="submit" name="wm_id" value="{{items['wm_id'][i]}}">Удалить</button>
+            </form>
+                <!-- <div id="{{items['wm_id'][i]}}" class="items">
+                    <p class="name fields">{{items['name'][i]}}</p>
+                    <p class="price fields">Цена на WB: {{items['current_price'][i]}}</p>
+                    <p class="old_price fields">Цена WM:{{items['old_price'][i]}}</p>
+                    <a class="wb_id fields" href="{{items['wb_link'][i]}}">WB_id: {{items['wb_id'][i]}}</a>
+                    <a class="wm_id fields" href="{{items['wm_link'][i]}}">  WM_id: {{items['wm_id'][i]}} </a>
+                    <p class="category fields">Коф: {{items['cof'][i]}}</p>
+                    <p class="cof fields">Категория: {{items['category'][i]}}</p>
+                    <form class="form_del" action="/" method="post">
+                        <button class="del_btn" type="submit" name="wm_id" value="{{items['wm_id'][i]}}">Удалить</button>
+                    </form>
+                </div> -->
+            {%endfor%}
+        </ul>
+    </div>
+</body>
+</html>
