@@ -24,6 +24,7 @@ class wbApiSender(wbDB):
 
     def send_price(self, action, wb_id):
         price_wbid = super().get_price_wb(action=action, wb_id=wb_id)
+        print(price_wbid)
         self.post_price_wb(wb_id=price_wbid[0], price=price_wbid[1])
 
 
