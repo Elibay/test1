@@ -42,4 +42,4 @@ class wbApiSender(wbDB):
 
     def send_count(self, wb_id):
         sku_count = super().add_sku_count(wb_id)
-        self.send_count(sku_count[0], sku_count[1])
+        self.post_count_wb(sku_count[0], sku_count[1])
