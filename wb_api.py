@@ -19,7 +19,7 @@ class wbApiSender(wbDB):
         data.append(data_dict)
 
         res = requests.post(url='https://suppliers-api.wildberries.ru/public/api/v1/prices', headers=headers, json=data)
-        print(res.status_code)
+        print(res.text)
 
 
     def post_count_wb(self, sku, count):
@@ -31,7 +31,7 @@ class wbApiSender(wbDB):
         warehouse = 647710
 
         data = []
-        data_dict = {"sku": sku, 'amount': int(count)}
+        data_dict = {"sku": str(sku), 'amount': int(count)}
         data.append(data_dict)
         res = requests.put(f"https://suppliers-api.wildberries.ru/api/v3/stocks/{warehouse}", headers=headers, json={'stocks': data})
         print(res.text)
