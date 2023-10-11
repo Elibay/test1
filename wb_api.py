@@ -31,7 +31,7 @@ class wbApiSender(wbDB):
         warehouse = 647710
 
         res = requests.put(f"https://suppliers-api.wildberries.ru/api/v3/stocks/{warehouse}", headers=headers, json={'stocks': {sku: str(count)}})
-        print(res.status_code)
+        print(res.text)
 
 
     def send_price(self, wb_id):
