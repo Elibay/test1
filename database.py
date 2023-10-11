@@ -95,7 +95,7 @@ class wbDB(database):
 
 
     def add_sku_count(self, wb_id):
-        return self.cur.execute('SELECT sku, count FROM wb_wm WHERE sku = ?', (wb_id, )).fetchone()
+        return self.cur.execute('SELECT sku, count FROM wb_wm WHERE wb_id = ?', (wb_id, )).fetchone()
 
 
     def update_items(self):
