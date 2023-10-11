@@ -88,35 +88,23 @@ class delItem(database):
         self.con.close()
 
 
-""" class wbApiSender(database):
-    Класс для работы с данными для WB
-
-    def __init__(self):
-        super().__init__()
-
-
-    def get_price_wb(self, action, wb_id):
-        if action == 'add':
-            fields = self.cur.execute('SELECT wb_id, current_price FROM wb_wm WHERE wb_id = ?', (wb_id,)).fetchone()
-            self.con.close()
-            return fields
-            #send_price_wb(wb_id=fields_for_price[0], price=fields_for_price[1])
-
-        elif action == 'update':
-            return self.cur.execute('SELECT wm_id, wb_id, cof, category FROM wb_wm').fetchall()
-
-
-    def send_count(self, action, sku):
-        pass """
-
-
 
 class wbDB(database):
-    def get_price_wb(self, action, wb_id):
-        if action == 'add':
-            return self.cur.execute('SELECT wb_id, current_price FROM wb_wm WHERE wb_id = ?', (wb_id,)).fetchone()
-            self.con.close()
-            send_price_wb(wb_id=fields_for_price[0], price=fields_for_price[1])
+    def add_price_wb(self, wb_id):
+        return self.cur.execute('SELECT wb_id, current_price FROM wb_wm WHERE wb_id = ?', (wb_id,)).fetchone()
 
-        elif action == 'update':
-            return self.cur.execute('SELECT wm_id, wb_id, cof, category FROM wb_wm').fetchall()
+
+    def add_sku_count(self, wb_id):
+        return self.cur.execute('SELECT sku, count FROM wb_wm WHERE sku = ?', (wb_id, )).fetchone()
+
+
+    def update_items(self):
+        return self.cur.execute('SELECT wm_id, wb_id, cof, category FROM wb_wm').fetchall()
+
+
+
+class updateItemsDb(database):
+    def update_item(self, price, count, wb_id):
+        self.cur.execute('UPDATE wm_id SET current_price = ?, count = ? WHERE wb_id = ?', (price, count, wb_id))
+        self.con.commit()
+        self.con.close()

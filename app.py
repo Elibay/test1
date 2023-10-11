@@ -28,7 +28,8 @@ def add():
         new_item = addNewItem(request.form['wm_id'], request.form['wb_id'], request.form['sku'], request.form['cof'], request.form['category'])
         new_item.add_item()
         wb = wbApiSender()
-        wb.send_price('add', request.form['wb_id'])
+        wb.send_price(request.form['wb_id'])
+        wb.send_count(request.form['wb_id'])
         return redirect('/')
     return render_template('add.html')
 

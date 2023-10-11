@@ -51,13 +51,9 @@ class parserConfig:
 
     #Запускает парсер и возвращает обновленые цены
     def update_item_parse(self, wm_links):
-        self._new_current_price = {}
-        self._new_count = {}
-        for i in wm_links:
-            self._browser.get(i[0])
-            time.sleep(2)
-            self._new_current_price[i[0]] = self._get_price()[0]
-            self._new_count[i[0]] = self._get_item_count()
-
+        self._browser.get(self, wm_links)
+        time.sleep(3)
+        self._new_current_price = self._get_price()[0]
+        self._new_count = self._get_item_count()
 
         return self._new_current_price, self._new_count
