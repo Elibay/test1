@@ -20,3 +20,8 @@ class updateItems(parserConfig):
             self.upd.update_item(new_price, wm[1], self._items[i][1])
             self.wbApi.send_price(self._items[i][1])
             self.wbApi.send_count(self._items[i][1])
+
+
+
+upd = updateItems()
+upd.update()
