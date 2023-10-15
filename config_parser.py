@@ -45,13 +45,14 @@ class parserConfig:
             self._count = self._get_item_count()
             self._proxy_element.send_keys(Keys.ESCAPE)
             self._list_values =  [self._get_name(), self._prices[1], self._count]
+            self._browser.close()
             return self._list_values
         except Exception:
             return [None,None,None,None]
 
     #Запускает парсер и возвращает обновленые цены
     def update_item_parse(self, wm_links):
-        self._browser.get(self, wm_links)
+        self._browser.get(wm_links)
         time.sleep(3)
         self._new_current_price = self._get_price()[0]
         self._new_count = self._get_item_count()
