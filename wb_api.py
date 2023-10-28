@@ -10,7 +10,7 @@ class wbApiSender(wbDB):
 
     def post_price_wb(self, wb_id, price):
         headers = {
-            'Authorization': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhY2Nlc3NJRCI6Ijc5NjAzMDZmLTdhYmMtNDM0ZS05M2E3LWVmMmUyOWEyOWZmMCJ9.OJ-0Wcogy-mA4O_SmVfvN_IiCxKx3nGg55KD1zlOUWc',
+            'Authorization': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhY2Nlc3NJRCI6IjUxNzdiMGM5LWVkYzAtNDYxZC1hZGUzLThkY2FmMTE4YTEzMiJ9.5qkZz1dpeKrt7EAEKAkej-G512MhBX1UXW2-Xj3Djhs',
             'Content-Type': 'application/json'
         }
         data = []
