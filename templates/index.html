@@ -20,6 +20,8 @@
             <li class="field_wm_price field_broad fields">Цена WM</li>
             <li class="field_cof field_narrow fields">Коф</li>
             <li class="field_category field_narrow fields">Категория</li>
+            <li class="field_ff_price field_narrow fields">FF price</li>
+            <li class="field_logistics field_narrow fields">Logistics</li>
             <li class="field_count field_broad fields">Количество</li>
         </ul>
     </div>
@@ -32,6 +34,8 @@
             <li class="fields field_broad">{{items['old_price'][i]}}</li>
             <li class="fields field_narrow">{{items['cof'][i]}}</li>
             <li class="fields field_narrow">{{items['category'][i]}}</li>
+            <li class="fields field_narrow">{{items['ff_price'][i]}}</li>
+            <li class="fields field_narrow">{{items['logistics'][i]}}</li>
             <li class="fields field_broad">{{items['count'][i]}}</li>
             <form class="form_del" action="/" method="post">
                 <button class="del_btn" type="submit" name="wm_id" value="{{items['wm_id'][i]}}">Удалить</button>
