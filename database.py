@@ -105,6 +105,5 @@ class wbDB(database):
 
 class updateItemsDb(database):
     def update_item(self, price, count, wb_id):
-        self.cur.execute('UPDATE wm_id SET current_price = ?, count = ? WHERE wb_id = ?', (price, count, wb_id))
+        self.cur.execute('UPDATE wb_wm SET current_price = ?, count = ? WHERE wb_id = ?', (price, count, wb_id))
         self.con.commit()
-        self.con.close()

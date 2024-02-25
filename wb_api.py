@@ -28,7 +28,7 @@ class wbApiSender(wbDB):
             'Content-Type': 'application/json'
         }
 
-        warehouse = 647710
+        warehouse = 548333
 
         data = []
         data_dict = {"sku": str(sku), 'amount': int(count)}

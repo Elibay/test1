@@ -21,8 +21,16 @@ class parserConfig:
     #Возвращает кортеж из цен: текущая цена со скидкой, цена до скидки
     def _get_price(self):
         _wrapper = self._get_price_wrapper()
-        _current_price = str(_wrapper[0].find_element(By.CLASS_NAME, 'price_value').text).replace(' ', '')
-        _old_price = _wrapper[1].find_element(By.CLASS_NAME, 'price_value').text
+        print(len(_wrapper))
+        time.sleep(5)
+        if len(_wrapper) < 2:
+            _current_price = 0
+            _old_price = _wrapper[0].find_element(By.CLASS_NAME, 'price_value').text
+            print(_old_price)
+            time.sleep(5)
+        else:
+            _current_price = str(_wrapper[0].find_element(By.CLASS_NAME, 'price_value').text).replace(' ', '')
+            _old_price = _wrapper[1].find_element(By.CLASS_NAME, 'price_value').text
         return (_current_price, _old_price)
 
 
@@ -54,7 +62,6 @@ class parserConfig:
     def update_item_parse(self, wm_links):
         self._browser.get(wm_links)
         time.sleep(3)
-        self._new_current_price = self._get_price()[0]
+        self._new_current_price = self._get_price()[1]
         self._new_count = self._get_item_count()
-
         return self._new_current_price, self._new_count

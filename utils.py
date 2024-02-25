@@ -6,6 +6,7 @@ def get_rate():
 
 
 def get_calculation_price(price, category, cof, rate):
+        print(price, '-----------------------------')
         valid_price = int(str(price).replace(" ", '').strip())
         price_minus_10_percent = int(valid_price) - (int(valid_price)/100)*10
         print(rate)

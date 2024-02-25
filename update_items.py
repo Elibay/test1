@@ -10,7 +10,7 @@ class updateItems(parserConfig):
         super().__init__(link)
         self.wb_db = wbDB()
         self.wbApi = wbApiSender()
-        self.upd = updateItemsDb
+        self.upd = updateItemsDb()
 
     def update(self):
         self._items = self.wb_db.update_items()
@@ -20,8 +20,7 @@ class updateItems(parserConfig):
             self.upd.update_item(new_price, wm[1], self._items[i][1])
             self.wbApi.send_price(self._items[i][1])
             self.wbApi.send_count(self._items[i][1])
-
-
+        self.upd.con.close()
 
 upd = updateItems()
 upd.update()
