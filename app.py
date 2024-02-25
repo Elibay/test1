@@ -5,8 +5,6 @@ from wb_api import wbApiSender
 
 app = Flask(__name__)
 
-
-
 add = {'name': 'добавить', 'url': '/add'}
 
 
@@ -19,13 +17,16 @@ def index():
         di = delItem()
         di.del_item(request.form['wm_id'])
         return redirect('/')
-    return render_template('index.html', items = items, len = len(items['name']), add = add)
+    return render_template('index.html', items=items, len=len(items['name']), add=add)
 
 
 @app.route('/add', methods=['POST', 'GET'])
 def add():
     if request.method == 'POST':
-        new_item = addNewItem(request.form['wm_id'], request.form['wb_id'], request.form['sku'], request.form['cof'], request.form['category'])
+        ff_price = request.form['ff_price']
+        logistics = request.form['logistics']
+        new_item = addNewItem(request.form['wm_id'], request.form['wb_id'], request.form['sku'], request.form['cof'],
+                              ff_price, logistics, request.form['category'])
         new_item.add_item()
         wb = wbApiSender()
         wb.send_price(request.form['wb_id'])
